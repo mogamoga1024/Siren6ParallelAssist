@@ -27,19 +27,24 @@
         Reset
       </div>
       <div class="btn"
-           :class="{'selected': isInportMode}"
-           @click="isInportMode = !isInportMode, isExportMode = false">
+           :class="{'selected': isImportMode}"
+           @click="isImportMode = !isImportMode, isExportMode = false">
         Import
       </div>
       <div class="btn"
            :class="{'selected': isExportMode}"
-           @click="onClickExport">
+           @click="onClickExportMode">
         Export
       </div>
     </div>
 
-    <div v-if="isInportMode" style="margin-top: 8px;">
-      <textarea placeholder="Exportされたデータを貼り付けてください"></textarea>
+    <div v-if="isImportMode" style="margin-top: 8px;">
+      <textarea ref="importTextarea" placeholder="Exportされたデータを貼り付けてから、取り込むボタンを押してください"></textarea><br>
+      <div class="btn"
+           style="display: inline-block;"
+           @click="onClickImport($refs.importTextarea.value)">
+        取り込む
+      </div>
     </div>
 
     <div v-if="isExportMode" style="margin-top: 8px;">

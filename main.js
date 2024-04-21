@@ -11,7 +11,7 @@ const vm = {
             floorMemoList: floorMemoList,
             editTargetFloorName: "",
 
-            isInportMode: false,
+            isImportMode: false,
             isExportMode: false,
             exportText: "",
         };
@@ -51,9 +51,13 @@ const vm = {
             this.floorMemoList.forEach(floor => floor.memo = "");
         },
 
-        onClickExport() {
+        onClickImport(importText) {
+            console.log(importText);
+        },
+
+        onClickExportMode() {
             this.isExportMode = !this.isExportMode;
-            this.isInportMode = false
+            this.isImportMode = false
 
             this.exportText = "";
             for (const target of [kusa, tue, makimono, tubo, okou, udewa]) {
@@ -82,7 +86,7 @@ const vm = {
             }, 0);
         },
         onBlurUnskbtItem(e, skbtItem) {
-            this.isInportMode = this.isExportMode = false;
+            this.isImportMode = this.isExportMode = false;
             this.editTargetItemName = "";
             skbtItem.unskbtName = e.target.value;
 
@@ -98,7 +102,7 @@ const vm = {
             }, 0);
         },
         onBlurFloor(e, floor) {
-            this.isInportMode = this.isExportMode = false;
+            this.isImportMode = this.isExportMode = false;
             this.editTargetFloorName = "";
             floor.memo = e.target.value;
 
