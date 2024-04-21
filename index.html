@@ -94,7 +94,7 @@
               </option>
             </select>
           </td>
-          <td>{{skbtItem.name}}</td>
+          <td :class="{'gray': skbtItem.unskbtName === ''}">{{skbtItem.name}}</td>
         </tr>
       </table>
       <div v-else>
