@@ -17,13 +17,41 @@
     <h1>シレン6 パラレル補助ツール</h1>
 
     <div class="radio-btn-container">
-      <div class="radio-btn">草</div>
-      <div class="radio-btn">杖</div>
-      <div class="radio-btn">巻物</div>
-      <div class="radio-btn">壺</div>
-      <div class="radio-btn">お香</div>
-      <div class="radio-btn">腕輪</div>
-      <div class="radio-btn">階層</div>
+      <div class="radio-btn"
+           :class="{selected: mode === 'kusa'}"
+           @click="mode = 'kusa'">
+        草
+      </div>
+      <div class="radio-btn"
+           :class="{selected: mode === 'tue'}"
+           @click="mode = 'tue'">
+        杖
+      </div>
+      <div class="radio-btn"
+           :class="{selected: mode === 'makimono'}"
+           @click="mode = 'makimono'">
+        巻物
+      </div>
+      <div class="radio-btn"
+           :class="{selected: mode === 'tubo'}"
+           @click="mode = 'tubo'">
+        壺
+      </div>
+      <div class="radio-btn"
+           :class="{selected: mode === 'okou'}"
+           @click="mode = 'okou'">
+        お香
+      </div>
+      <div class="radio-btn"
+           :class="{selected: mode === 'udewa'}"
+           @click="mode = 'udewa'">
+        腕輪
+      </div>
+      <div class="radio-btn"
+           :class="{selected: mode === 'floor'}"
+           @click="mode = 'floor'">
+        階層
+      </div>
     </div>
     
   </div>

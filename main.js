@@ -2,7 +2,7 @@
 const vm = {
     data() {
         return {
-
+            mode: "kusa",
         };
     },
     created() {
