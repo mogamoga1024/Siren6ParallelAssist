@@ -4,15 +4,32 @@ const vm = {
         return {
             mode: "kusa",
             unskbtItemList: [],
-            skbtNameList: [],
+            skbtItemList: [],
         };
     },
     created() {
         this.unskbtItemList = kusaUnskbtItemList;
-        this.skbtNameList = kusaSkbtNameList;
+        this.skbtItemList = kusaSkbtItemList;
     },
     methods: {
+        onChangeUnskbtItem(e, skbtItem) {
+            const unskbtnName = e.target.value;
+            if (unskbtnName === "") {
+                return;
+            }
+            skbtItem.unskbtName = unskbtnName;
+            const unskbtItem = this.findUnskbtItemByName(unskbtnName);
+            unskbtItem.isSelected = true;
+        },
 
+        findUnskbtItemByName(name) {
+            for (const unskbtItem of this.unskbtItemList) {
+                if (unskbtItem.name === name) {
+                    return unskbtItem;
+                }
+            }
+            return null;
+        }
     }
 };
 

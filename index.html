@@ -72,18 +72,22 @@
           <th>未識別名</th>
           <th>識別名</th>
         </tr>
-        <tr v-for="skbtName in skbtNameList">
+        <tr v-for="skbtItem in skbtItemList">
           <td>
-            <select>
+            <div v-if="skbtItem.unskbtName !== ''">
+              {{skbtItem.unskbtName}}
+            </div>
+            <select v-else
+                    @change="onChangeUnskbtItem($event, skbtItem)">
               <option value="">未選択</option>
               <option
                 v-for="unskbtItem in unskbtItemList.filter(e => !e.isSelected)"
-                value="unskbtItem.name">
+                :value="unskbtItem.name">
                 {{unskbtItem.name}}
               </option>
             </select>
           </td>
-          <td>{{skbtName}}</td>
+          <td>{{skbtItem.name}}</td>
         </tr>
       </table>
     </div>
