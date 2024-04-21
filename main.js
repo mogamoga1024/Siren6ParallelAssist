@@ -66,7 +66,7 @@ const vm = {
                 if (isFloorData) {
                     if (importStr === `<[${floorNum}F]>` || importStr === "<[END]>") {
                         if (floorNum > 1) {
-                            localStorage.setItem(`${floorNum}F`, memoList.join("\n"));
+                            localStorage.setItem(`${floorNum - 1}F`, memoList.join("\n"));
                         }
                         floorNum++;
                         memoList = [];
@@ -171,8 +171,8 @@ const vm = {
                 case "udewa": target = udewa; break;
                 case "floor": return;
             }
-            this.unskbtNameList = target.unskbtNameList;
-            this.skbtItemList = target.skbtItemList;
+            this.unskbtNameList = [...target.unskbtNameList];
+            this.skbtItemList = [...target.skbtItemList];
         },
 
         isUnskbt(unskbtName) {
