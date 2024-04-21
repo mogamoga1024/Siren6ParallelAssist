@@ -33,6 +33,12 @@
   }
 
   .edit-container {
-    padding: 0 16px;
+    width: 340px;
+    margin: 0 auto;
+  }
+
+  .floor-memo-textarea, textarea {
+    max-width: calc(100% - 20px);
+    margin: 0 auto;
   }
 }
