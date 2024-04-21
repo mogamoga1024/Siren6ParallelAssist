@@ -3,12 +3,12 @@ const vm = {
     data() {
         return {
             mode: "kusa",
-            unskbtNameList: [],
+            unskbtItemList: [],
             skbtNameList: [],
         };
     },
     created() {
-        this.unskbtNameList = kusaUnskbtNameList;
+        this.unskbtItemList = kusaUnskbtItemList;
         this.skbtNameList = kusaSkbtNameList;
     },
     methods: {

@@ -77,9 +77,9 @@
             <select>
               <option value="">未選択</option>
               <option
-                v-for="unskbtName in unskbtNameList"
-                value="unskbtName">
-                {{unskbtName}}
+                v-for="unskbtItem in unskbtItemList.filter(e => !e.isSelected)"
+                value="unskbtItem.name">
+                {{unskbtItem.name}}
               </option>
             </select>
           </td>
