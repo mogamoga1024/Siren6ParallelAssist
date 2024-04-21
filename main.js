@@ -3,13 +3,13 @@ const vm = {
     data() {
         return {
             mode: "kusa",
-            unskbtItemList: [],
+            unskbtNameList: [],
             skbtItemList: [],
             editTargetItemName: "",
         };
     },
     created() {
-        this.unskbtItemList = kusaUnskbtItemList;
+        this.unskbtNameList = kusaUnskbtNameList;
         this.skbtItemList = kusaSkbtItemList;
     },
     methods: {
@@ -18,28 +18,17 @@ const vm = {
         },
         onBlurUnskbtItem(e, skbtItem) {
             this.editTargetItemName = "";
-
-            const unskbtnName = e.target.value;
-            if (unskbtnName !== "") {
-                skbtItem.unskbtName = unskbtnName;
-                const unskbtItem = this.findUnskbtItemByName(unskbtnName);
-                unskbtItem.isSelected = true;
-            }
-            else if (skbtItem.unskbtName !== "") {
-                const unskbtItem = this.findUnskbtItemByName(skbtItem.unskbtName);
-                unskbtItem.isSelected = false;
-                skbtItem.unskbtName = "";
-            }
+            skbtItem.unskbtName = e.target.value;
         },
 
-        findUnskbtItemByName(name) {
-            for (const unskbtItem of this.unskbtItemList) {
-                if (unskbtItem.name === name) {
-                    return unskbtItem;
+        isUnskbt(unskbtName) {
+            for (const skbtItem of this.skbtItemList) {
+                if (skbtItem.unskbtName === unskbtName) {
+                    return false;
                 }
             }
-            return null;
-        }
+            return true;
+        },
     }
 };
 

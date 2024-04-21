@@ -87,9 +87,9 @@
                 {{skbtItem.unskbtName}}
               </option>
               <option
-                v-for="unskbtItem in unskbtItemList.filter(e => !e.isSelected)"
-                :value="unskbtItem.name">
-                {{unskbtItem.name}}
+                v-for="unskbtName in unskbtNameList.filter(name => isUnskbt(name))"
+                :value="unskbtName">
+                {{unskbtName}}
               </option>
             </select>
           </td>
