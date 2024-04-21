@@ -55,7 +55,7 @@
          class="edit-container"
          style="margin-top: 8px;">
       コピーして保存してください
-      <textarea>{{exportText}}</textarea>
+      <textarea @click="$event.target.select()">{{exportText}}</textarea>
     </div>
 
     <div class="btn-container-wrapper">

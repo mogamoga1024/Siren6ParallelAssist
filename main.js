@@ -58,13 +58,14 @@ const vm = {
             let isFloorData = false;
             let memoList = [];
             
-            for (const importStr of importStrList) {
+            for (let i = 0; i < importStrList.length; i++) {
+                const importStr = importStrList[i];
                 if (!isFloorData && importStr === "<[===]>") {
                     isFloorData = true;
                     continue;
                 }
                 if (isFloorData) {
-                    if (importStr === "<[===]>") {
+                    if (importStr === "<[===]>" || i === importStrList.length - 1) {
                         const [floorName, ...mainMemoList] = memoList;
                         localStorage.setItem(floorName, mainMemoList.join("\n"));
                         memoList = [];
@@ -119,9 +120,6 @@ const vm = {
                     this.exportText += `<[===]>\n${floor.name}\n${floor.memo}\n`;
                 }
             });
-            if (this.exportText.trim() !== "") {
-                this.exportText += "<[===]>";
-            }
         },
 
         onClickUnskbtItem(skbtItemName, index) {
