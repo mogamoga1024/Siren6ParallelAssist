@@ -24,18 +24,7 @@ const vm = {
         mode(newVal) {
             this.editTargetItemName = "";
             this.editTargetFloorName = "";
-            let target = null;
-            switch (newVal) {
-                case "kusa": target = kusa; break;
-                case "tue": target = tue; break;
-                case "makimono": target = makimono; break;
-                case "tubo": target = tubo; break;
-                case "okou": target = okou; break;
-                case "udewa": target = udewa; break;
-                case "floor": return;
-            }
-            this.unskbtNameList = target.unskbtNameList;
-            this.skbtItemList = target.skbtItemList;
+            this.updateItemList(newVal);
         },
     },
     methods: {
@@ -52,7 +41,60 @@ const vm = {
         },
 
         onClickImport(importText) {
-            console.log(importText);
+            if (importText.trim() === "") {
+                return;
+            }
+
+            this.editTargetItemName = "";
+            this.editTargetFloorName = "";
+            localStorage.clear();
+            
+            const importStrList = importText.split("\n");
+            let isFloorData = false;
+            let floorNum = 1;
+            let memoList = [];
+            
+            for (const importStr of importStrList) {
+                if (!isFloorData && importStr === "<[1F]>") {
+                    isFloorData = true;
+                }
+                if (isFloorData) {
+                    if (importStr === `<[${floorNum}F]>` || importStr === "<[END]>") {
+                        if (floorNum > 1) {
+                            localStorage.setItem(`${floorNum}F`, memoList.join("\n"));
+                        }
+                        floorNum++;
+                        memoList = [];
+                    }
+                    else {
+                        memoList.push(importStr);
+                    }
+                }
+                else {
+                    let [skbtName, unskbtName] = importStr.split("\t");
+                    localStorage.setItem(skbtName, unskbtName);
+                }
+            }
+
+            // 反映
+
+            for (const target of [kusa, tue, makimono, tubo, okou, udewa]) {
+                for (const skbtItem of target.skbtItemList) {
+                    const unskbtName = localStorage.getItem(skbtItem.name);
+                    if (unskbtName !== null) {
+                        skbtItem.unskbtName = unskbtName;
+                    }
+                }
+            }
+
+            for (const floor of this.floorMemoList) {
+                const memo = localStorage.getItem(floor.name);
+                if (memo !== null) {
+                    floor.memo = memo;
+                }
+            }
+
+            this.updateItemList(this.mode);
         },
 
         onClickExportMode() {
@@ -68,6 +110,7 @@ const vm = {
             this.floorMemoList.forEach(floor => {
                 this.exportText += `<[${floor.name}]>\n${floor.memo}\n`;
             });
+            this.exportText += "<[END]>";
         },
 
         onClickUnskbtItem(skbtItemName, index) {
@@ -76,7 +119,6 @@ const vm = {
             this.editTargetItemName = skbtItemName;
 
             timer = setInterval(() => {
-                // this.$refs.unskbtName[index].focus();
                 const domUnskbtNameList = document.querySelectorAll(".unskbt-name");
                 if (domUnskbtNameList.length > 0) {
                     clearInterval(timer);
@@ -107,6 +149,21 @@ const vm = {
             floor.memo = e.target.value;
 
             localStorage.setItem(floor.name, floor.memo);
+        },
+
+        updateItemList(mode) {
+            let target = null;
+            switch (mode) {
+                case "kusa": target = kusa; break;
+                case "tue": target = tue; break;
+                case "makimono": target = makimono; break;
+                case "tubo": target = tubo; break;
+                case "okou": target = okou; break;
+                case "udewa": target = udewa; break;
+                case "floor": return;
+            }
+            this.unskbtNameList = target.unskbtNameList;
+            this.skbtItemList = target.skbtItemList;
         },
 
         isUnskbt(unskbtName) {
