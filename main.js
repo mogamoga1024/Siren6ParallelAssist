@@ -1,4 +1,6 @@
 
+let timer = 0;
+
 const vm = {
     data() {
         return {
@@ -8,6 +10,10 @@ const vm = {
             editTargetItemName: "",
             floorMemoList: floorMemoList,
             editTargetFloorName: "",
+
+            isInportMode: false,
+            isExportMode: false,
+            exportText: "",
         };
     },
     created() {
@@ -45,14 +51,38 @@ const vm = {
             this.floorMemoList.forEach(floor => floor.memo = "");
         },
 
+        onClickExport() {
+            this.isExportMode = !this.isExportMode;
+            this.isInportMode = false
+
+            this.exportText = "";
+            for (const target of [kusa, tue, makimono, tubo, okou, udewa]) {
+                target.skbtItemList.forEach(item => {
+                    this.exportText += `${item.name}\t${item.unskbtName}\n`;
+                });
+            }
+            this.floorMemoList.forEach(floor => {
+                this.exportText += `<[${floor.name}]>\n${floor.memo}\n`;
+            });
+        },
+
         onClickUnskbtItem(skbtItemName, index) {
+            clearInterval(timer);
+
             this.editTargetItemName = skbtItemName;
 
-            setTimeout(() => {
-                this.$refs.unskbtName[index].focus();
+            timer = setInterval(() => {
+                // this.$refs.unskbtName[index].focus();
+                const domUnskbtNameList = document.querySelectorAll(".unskbt-name");
+                if (domUnskbtNameList.length > 0) {
+                    clearInterval(timer);
+                    const domUnskbtName = domUnskbtNameList[index];
+                    domUnskbtName.focus();
+                }
             }, 0);
         },
         onBlurUnskbtItem(e, skbtItem) {
+            this.isInportMode = this.isExportMode = false;
             this.editTargetItemName = "";
             skbtItem.unskbtName = e.target.value;
 
@@ -68,6 +98,7 @@ const vm = {
             }, 0);
         },
         onBlurFloor(e, floor) {
+            this.isInportMode = this.isExportMode = false;
             this.editTargetFloorName = "";
             floor.memo = e.target.value;
 

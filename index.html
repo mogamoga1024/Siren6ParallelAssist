@@ -22,9 +22,29 @@
     <h1>シレン6 パラレル補助ツール</h1>
 
     <div class="btn-container">
-      <div class="btn" @click="onClickReset">Reset</div>
-      <div class="btn">Import</div>
-      <div class="btn">Export</div>
+      <div class="btn"
+           @click="onClickReset">
+        Reset
+      </div>
+      <div class="btn"
+           :class="{'selected': isInportMode}"
+           @click="isInportMode = !isInportMode, isExportMode = false">
+        Import
+      </div>
+      <div class="btn"
+           :class="{'selected': isExportMode}"
+           @click="onClickExport">
+        Export
+      </div>
+    </div>
+
+    <div v-if="isInportMode" style="margin-top: 8px;">
+      <textarea placeholder="Exportされたデータを貼り付けてください"></textarea>
+    </div>
+
+    <div v-if="isExportMode" style="margin-top: 8px;">
+      コピーして保存してください
+      <textarea>{{exportText}}</textarea>
     </div>
 
     <div class="radio-btn-container"
@@ -74,12 +94,13 @@
         </tr>
         <tr v-for="(skbtItem, index) in skbtItemList">
           <td>
-            <div v-show="skbtItem.unskbtName !== '' && editTargetItemName !== skbtItem.name"
+            <div v-if="skbtItem.unskbtName !== '' && editTargetItemName !== skbtItem.name"
+                 class="unskbt-name"
                  @click="onClickUnskbtItem(skbtItem.name, index)">
               {{skbtItem.unskbtName}}
             </div>
-            <select v-show="!(skbtItem.unskbtName !== '' && editTargetItemName !== skbtItem.name)"
-                    ref="unskbtName"
+            <select v-else
+                    class="unskbt-name"
                     @blur="onBlurUnskbtItem($event, skbtItem)">
               <option value="">不明</option>
               <option v-if="editTargetItemName === skbtItem.name"
