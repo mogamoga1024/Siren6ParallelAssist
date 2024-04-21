@@ -36,6 +36,8 @@ const vm = {
         onBlurUnskbtItem(e, skbtItem) {
             this.editTargetItemName = "";
             skbtItem.unskbtName = e.target.value;
+
+            localStorage.setItem(skbtItem.name, skbtItem.unskbtName);
         },
 
         isUnskbt(unskbtName) {

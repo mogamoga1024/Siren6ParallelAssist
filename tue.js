@@ -50,3 +50,10 @@ tue.skbtItemList = [
     {name: "身代わりの杖", unskbtName: ""},
     {name: "桃まんの杖", unskbtName: ""},
 ];
+
+for (const skbtItem of tue.skbtItemList) {
+    const unskbtName = localStorage.getItem(skbtItem.name);
+    if (unskbtName !== null) {
+        skbtItem.unskbtName = unskbtName;
+    }
+}

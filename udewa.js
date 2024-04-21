@@ -89,3 +89,10 @@ udewa.skbtItemList = [
     {name: "鑑定師の腕輪", unskbtName: ""},
     {name: "百発百中の腕輪", unskbtName: ""},    
 ];
+
+for (const skbtItem of udewa.skbtItemList) {
+    const unskbtName = localStorage.getItem(skbtItem.name);
+    if (unskbtName !== null) {
+        skbtItem.unskbtName = unskbtName;
+    }
+}

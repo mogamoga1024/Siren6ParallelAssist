@@ -69,3 +69,9 @@ kusa.skbtItemList = [
     {name: "超不幸の種", unskbtName: ""},
 ];
 
+for (const skbtItem of kusa.skbtItemList) {
+    const unskbtName = localStorage.getItem(skbtItem.name);
+    if (unskbtName !== null) {
+        skbtItem.unskbtName = unskbtName;
+    }
+}

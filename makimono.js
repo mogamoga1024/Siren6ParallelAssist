@@ -94,3 +94,10 @@ makimono.skbtItemList = [
     {name: "全滅の巻物", unskbtName: ""},
     {name: "ねだやしの巻物", unskbtName: ""},
 ];
+
+for (const skbtItem of makimono.skbtItemList) {
+    const unskbtName = localStorage.getItem(skbtItem.name);
+    if (unskbtName !== null) {
+        skbtItem.unskbtName = unskbtName;
+    }
+}

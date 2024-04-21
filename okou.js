@@ -34,3 +34,10 @@ okou.skbtItemList = [
     {name: "重力のお香", unskbtName: ""},
     {name: "無欲のお香", unskbtName: ""},    
 ];
+
+for (const skbtItem of okou.skbtItemList) {
+    const unskbtName = localStorage.getItem(skbtItem.name);
+    if (unskbtName !== null) {
+        skbtItem.unskbtName = unskbtName;
+    }
+}

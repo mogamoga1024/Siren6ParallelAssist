@@ -58,3 +58,10 @@ tubo.skbtItemList = [
     {name: "強化の壺", unskbtName: ""},
     {name: "弱化の壺", unskbtName: ""},    
 ];
+
+for (const skbtItem of tubo.skbtItemList) {
+    const unskbtName = localStorage.getItem(skbtItem.name);
+    if (unskbtName !== null) {
+        skbtItem.unskbtName = unskbtName;
+    }
+}
