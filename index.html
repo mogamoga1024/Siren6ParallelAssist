@@ -74,12 +74,18 @@
         </tr>
         <tr v-for="skbtItem in skbtItemList">
           <td>
-            <div v-if="skbtItem.unskbtName !== ''">
+            <div v-if="skbtItem.unskbtName !== '' && editTargetItemName !== skbtItem.name"
+                 @click="onClickUnskbtItem(skbtItem.name)">
               {{skbtItem.unskbtName}}
             </div>
             <select v-else
                     @blur="onBlurUnskbtItem($event, skbtItem)">
               <option value="">不明</option>
+              <option v-if="editTargetItemName === skbtItem.name"
+                      :value="skbtItem.unskbtName"
+                      selected>
+                {{skbtItem.unskbtName}}
+              </option>
               <option
                 v-for="unskbtItem in unskbtItemList.filter(e => !e.isSelected)"
                 :value="unskbtItem.name">
