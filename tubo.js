@@ -35,6 +35,26 @@ tubo.unskbtNameList = [
     "よじれた",
 ];
 
+// ビックリは除外
 tubo.skbtItemList = [
-
+    {name: "保存の壺", unskbtName: ""},
+    {name: "識別の壺", unskbtName: ""},
+    {name: "変化の壺", unskbtName: ""},
+    {name: "ただの壺", unskbtName: ""},
+    {name: "やりすごしの壺", unskbtName: ""},
+    {name: "換金の壺", unskbtName: ""},
+    {name: "底抜けの壺", unskbtName: ""},
+    {name: "倉庫の壺", unskbtName: ""},
+    {name: "手封じの壺", unskbtName: ""},
+    {name: "割れない壺", unskbtName: ""},
+    {name: "おはらいの壺", unskbtName: ""},
+    {name: "呪いの壺", unskbtName: ""},
+    {name: "背中の壺", unskbtName: ""},
+    {name: "トドの壺", unskbtName: ""},
+    {name: "水鉄砲の壺", unskbtName: ""},
+    {name: "笑いの壺", unskbtName: ""},
+    {name: "魔物の壺", unskbtName: ""},
+    {name: "合成の壺", unskbtName: ""},
+    {name: "強化の壺", unskbtName: ""},
+    {name: "弱化の壺", unskbtName: ""},    
 ];
