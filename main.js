@@ -75,7 +75,7 @@ const vm = {
                     }
                 }
                 else {
-                    let [skbtName, unskbtName] = importStr.split("\t");
+                    let [skbtName, unskbtName] = importStr.split(" ");
                     localStorage.setItem(skbtName, unskbtName);
                 }
             }
@@ -111,7 +111,7 @@ const vm = {
             for (const target of [kusa, tue, makimono, tubo, okou, udewa]) {
                 target.skbtItemList.forEach(item => {
                     if (item.unskbtName !== "") {
-                        this.exportText += `${item.name}\t${item.unskbtName}\n`;
+                        this.exportText += `${item.name} ${item.unskbtName}\n`;
                     }
                 });
             }
