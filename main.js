@@ -42,6 +42,7 @@ const vm = {
             for (const target of [this, kusa, tue, makimono, tubo, okou, udewa]) {
                 target.skbtItemList.forEach(item => item.unskbtName = "");
             }
+            this.floorMemoList.forEach(floor => floor.memo = "");
         },
 
         onClickUnskbtItem(skbtItemName) {
@@ -65,6 +66,8 @@ const vm = {
         onBlurFloor(e, floor) {
             this.editTargetFloorName = "";
             floor.memo = e.target.value;
+
+            localStorage.setItem(floor.name, floor.memo);
         },
 
         isUnskbt(unskbtName) {
