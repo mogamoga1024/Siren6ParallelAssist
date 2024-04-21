@@ -1,5 +1,7 @@
 
-const kusaUnskbtNameList = [
+const kusa = {};
+
+kusa.unskbtNameList = [
     "あおい",
     "あかい",
     "うすみどり",
@@ -37,7 +39,7 @@ const kusaUnskbtNameList = [
     "レモン色",
 ];
 
-const kusaSkbtItemList = [
+kusa.skbtItemList = [
     {name: "雑草", unskbtName: ""},
     {name: "薬草", unskbtName: ""},
     {name: "毒草", unskbtName: ""},

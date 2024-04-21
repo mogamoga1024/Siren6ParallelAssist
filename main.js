@@ -9,8 +9,25 @@ const vm = {
         };
     },
     created() {
-        this.unskbtNameList = kusaUnskbtNameList;
-        this.skbtItemList = kusaSkbtItemList;
+        this.unskbtNameList = kusa.unskbtNameList;
+        this.skbtItemList = kusa.skbtItemList;
+    },
+    watch: {
+        mode(newVal) {
+            this.editTargetItemName = "";
+            let target = null;
+            switch (newVal) {
+                case "kusa": target = kusa; break;
+                case "tue": target = tue; break;
+                case "makimono": target = makimono; break;
+                case "tubo": target = tubo; break;
+                case "okou": target = okou; break;
+                case "udewa": target = udewa; break;
+                case "floor": return; // todo
+            }
+            this.unskbtNameList = target.unskbtNameList;
+            this.skbtItemList = target.skbtItemList;
+        },
     },
     methods: {
         onClickUnskbtItem(skbtItemName) {
