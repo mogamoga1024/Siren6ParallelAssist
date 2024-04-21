@@ -1,2 +1,23 @@
 
+@media screen and (max-width: 580px) {
+  :root {
+    --font-size: 18px;
+  
+    font-size: var(--font-size);
+  }
 
+  #app {
+    margin: 0;
+    padding: 0 8px;
+  }
+
+  h1 {
+    font-size: 27px;
+    text-align: center;
+  }
+
+  .btn-container-wrapper {
+    width: fit-content;
+    margin: 0 auto;
+  }
+}

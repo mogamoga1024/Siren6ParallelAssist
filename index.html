@@ -21,20 +21,22 @@
   <div id="app" v-cloak>
     <h1>シレン6 パラレル補助ツール</h1>
 
-    <div class="btn-container">
-      <div class="btn"
-           @click="onClickReset">
-        Reset
-      </div>
-      <div class="btn"
-           :class="{'selected': isImportMode}"
-           @click="isImportMode = !isImportMode, isExportMode = false">
-        Import
-      </div>
-      <div class="btn"
-           :class="{'selected': isExportMode}"
-           @click="onClickExportMode">
-        Export
+    <div class="btn-container-wrapper">
+      <div class="btn-container">
+        <div class="btn"
+             @click="onClickReset">
+          Reset
+        </div>
+        <div class="btn"
+             :class="{'selected': isImportMode}"
+             @click="isImportMode = !isImportMode, isExportMode = false">
+          Import
+        </div>
+        <div class="btn"
+             :class="{'selected': isExportMode}"
+             @click="onClickExportMode">
+          Export
+        </div>
       </div>
     </div>
 
@@ -52,45 +54,47 @@
       <textarea>{{exportText}}</textarea>
     </div>
 
-    <div class="radio-btn-container"
-         style="margin-top: 8px;">
-      <div class="radio-btn"
-           :class="{selected: mode === 'kusa'}"
-           @click="mode = 'kusa'">
-        草
-      </div>
-      <div class="radio-btn"
-           :class="{selected: mode === 'tue'}"
-           @click="mode = 'tue'">
-        杖
-      </div>
-      <div class="radio-btn"
-           :class="{selected: mode === 'makimono'}"
-           @click="mode = 'makimono'">
-        巻物
-      </div>
-      <div class="radio-btn"
-           :class="{selected: mode === 'tubo'}"
-           @click="mode = 'tubo'">
-        壺
-      </div>
-      <div class="radio-btn"
-           :class="{selected: mode === 'okou'}"
-           @click="mode = 'okou'">
-        お香
-      </div>
-      <div class="radio-btn"
-           :class="{selected: mode === 'udewa'}"
-           @click="mode = 'udewa'">
-        腕輪
-      </div>
-      <div class="radio-btn"
-           :class="{selected: mode === 'floor'}"
-           @click="mode = 'floor'">
-        階層
+    <div class="btn-container-wrapper">
+      <div class="radio-btn-container"
+           style="margin-top: 8px;">
+        <div class="radio-btn"
+             :class="{selected: mode === 'kusa'}"
+             @click="mode = 'kusa'">
+          草
+        </div>
+        <div class="radio-btn"
+             :class="{selected: mode === 'tue'}"
+             @click="mode = 'tue'">
+          杖
+        </div>
+        <div class="radio-btn"
+             :class="{selected: mode === 'makimono'}"
+             @click="mode = 'makimono'">
+          巻物
+        </div>
+        <div class="radio-btn"
+             :class="{selected: mode === 'tubo'}"
+             @click="mode = 'tubo'">
+          壺
+        </div>
+        <div class="radio-btn"
+             :class="{selected: mode === 'okou'}"
+             @click="mode = 'okou'">
+          お香
+        </div>
+        <div class="radio-btn"
+             :class="{selected: mode === 'udewa'}"
+             @click="mode = 'udewa'">
+          腕輪
+        </div>
+        <div class="radio-btn"
+             :class="{selected: mode === 'floor'}"
+             @click="mode = 'floor'">
+          階層
+        </div>
       </div>
     </div>
-
+    
     <div style="margin-top: 12px; padding-bottom: 50px;">
       <table v-if="mode !== 'floor'">
         <tr>
