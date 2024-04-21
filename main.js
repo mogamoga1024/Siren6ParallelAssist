@@ -30,6 +30,17 @@ const vm = {
         },
     },
     methods: {
+        onClickReset() {
+            if (!confirm("本当にリセットしますか？")) {
+                return;
+            }
+            this.editTargetItemName = "";
+            localStorage.clear();
+            for (const target of [this, kusa, tue, makimono, tubo, okou, udewa]) {
+                target.skbtItemList.forEach(item => item.unskbtName = "");
+            }
+        },
+
         onClickUnskbtItem(skbtItemName) {
             this.editTargetItemName = skbtItemName;
         },
