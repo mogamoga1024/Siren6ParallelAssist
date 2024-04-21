@@ -1,0 +1,25 @@
+
+:root {
+  font-family: Verdana, sans-serif;
+  font-size: 24px;
+
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+body {
+  min-height: 90vh;
+  margin: 0;
+}
+
+#app {
+  margin-left: 120px;
+  max-width: 700px;
+  background-color: #fafafa;
+}
+
+h1 {
+  font-size: 30px;
+  margin: 8px 0;
+}
+

@@ -5,11 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>シレン6 パラレル補助ツール</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="mobile.css">
   <script src="https://cdn.jsdelivr.net/npm/vue@3.4.23/dist/vue.global.min.js"></script>
 </head>
-<body>
-  
-
+<!--
+  「body onclick=""」の理由
+  iPhoneのGoogleアプリのブラウザだとinputのフォーカスが背景を押しても外れない仕様のため、それに対応するためのハック
+-->
+<body onclick="">
+  <div id="app">
+    <h1>シレン6 パラレル補助ツール</h1>
+    hogehoge
+  </div>
 
   <script src="main.js"></script>
 </body>
