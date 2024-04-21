@@ -40,7 +40,9 @@
       </div>
     </div>
 
-    <div v-if="isImportMode" style="margin-top: 8px;">
+    <div v-if="isImportMode"
+         class="edit-container"
+         style="margin-top: 8px;">
       <textarea ref="importTextarea" placeholder="Exportされたデータを貼り付けてから、取り込むボタンを押してください"></textarea><br>
       <div class="btn"
            style="display: inline-block;"
@@ -49,7 +51,9 @@
       </div>
     </div>
 
-    <div v-if="isExportMode" style="margin-top: 8px;">
+    <div v-if="isExportMode"
+         class="edit-container"
+         style="margin-top: 8px;">
       コピーして保存してください
       <textarea>{{exportText}}</textarea>
     </div>
@@ -127,7 +131,8 @@
           <td :class="{'gray': skbtItem.unskbtName === ''}">{{skbtItem.name}}</td>
         </tr>
       </table>
-      <div v-else>
+      <div v-else
+           class="edit-container">
         <template v-for="floor in floorMemoList">
           <div class="floor-title">{{floor.name}}</div>
           <div v-show="editTargetFloorName !== floor.name"

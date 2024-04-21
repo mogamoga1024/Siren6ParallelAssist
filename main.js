@@ -119,7 +119,9 @@ const vm = {
                     this.exportText += `<[===]>\n${floor.name}\n${floor.memo}\n`;
                 }
             });
-            this.exportText += "<[===]>";
+            if (this.exportText.trim() !== "") {
+                this.exportText += "<[===]>";
+            }
         },
 
         onClickUnskbtItem(skbtItemName, index) {
