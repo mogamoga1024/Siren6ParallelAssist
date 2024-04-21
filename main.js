@@ -45,8 +45,12 @@ const vm = {
             this.floorMemoList.forEach(floor => floor.memo = "");
         },
 
-        onClickUnskbtItem(skbtItemName) {
+        onClickUnskbtItem(skbtItemName, index) {
             this.editTargetItemName = skbtItemName;
+
+            setTimeout(() => {
+                this.$refs.unskbtName[index].focus();
+            }, 0);
         },
         onBlurUnskbtItem(e, skbtItem) {
             this.editTargetItemName = "";

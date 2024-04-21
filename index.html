@@ -72,13 +72,14 @@
           <th>未識別名</th>
           <th>識別名</th>
         </tr>
-        <tr v-for="skbtItem in skbtItemList">
+        <tr v-for="(skbtItem, index) in skbtItemList">
           <td>
-            <div v-if="skbtItem.unskbtName !== '' && editTargetItemName !== skbtItem.name"
-                 @click="onClickUnskbtItem(skbtItem.name)">
+            <div v-show="skbtItem.unskbtName !== '' && editTargetItemName !== skbtItem.name"
+                 @click="onClickUnskbtItem(skbtItem.name, index)">
               {{skbtItem.unskbtName}}
             </div>
-            <select v-else
+            <select v-show="!(skbtItem.unskbtName !== '' && editTargetItemName !== skbtItem.name)"
+                    ref="unskbtName"
                     @blur="onBlurUnskbtItem($event, skbtItem)">
               <option value="">不明</option>
               <option v-if="editTargetItemName === skbtItem.name"
