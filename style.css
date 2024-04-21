@@ -148,6 +148,7 @@ th, td {
 
 .floor-memo {
   margin-bottom: 8px;
+  white-space: pre-wrap;
 }
 
 .floor-memo-textarea, textarea {

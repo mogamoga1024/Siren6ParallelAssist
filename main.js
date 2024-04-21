@@ -98,6 +98,8 @@ const vm = {
             }
 
             this.updateItemList(this.mode);
+
+            this.isImportMode = false;
         },
 
         onClickExportMode() {
