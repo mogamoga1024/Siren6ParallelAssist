@@ -101,6 +101,7 @@
           <div class="floor-title">{{floor.name}}</div>
           <div v-show="editTargetFloorName !== floor.name"
                class="floor-memo"
+               :class="{'gray': floor.memo.trim() === ''}"
                @click="onClickFloor(floor)">
             {{floor.memo.trim() === "" ? "特になし" : floor.memo}}
           </div>
