@@ -16,7 +16,14 @@
   <div id="app">
     <h1>シレン6 パラレル補助ツール</h1>
 
-    <div class="radio-btn-container">
+    <div class="btn-container">
+      <div class="btn">Reset</div>
+      <div class="btn">Import</div>
+      <div class="btn">Export</div>
+    </div>
+
+    <div class="radio-btn-container"
+         style="margin-top: 8px;">
       <div class="radio-btn"
            :class="{selected: mode === 'kusa'}"
            @click="mode = 'kusa'">
