@@ -78,8 +78,8 @@
               {{skbtItem.unskbtName}}
             </div>
             <select v-else
-                    @change="onChangeUnskbtItem($event, skbtItem)">
-              <option value="">未選択</option>
+                    @blur="onBlurUnskbtItem($event, skbtItem)">
+              <option value="">不明</option>
               <option
                 v-for="unskbtItem in unskbtItemList.filter(e => !e.isSelected)"
                 :value="unskbtItem.name">

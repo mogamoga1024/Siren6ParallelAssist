@@ -12,7 +12,7 @@ const vm = {
         this.skbtItemList = kusaSkbtItemList;
     },
     methods: {
-        onChangeUnskbtItem(e, skbtItem) {
+        onBlurUnskbtItem(e, skbtItem) {
             const unskbtnName = e.target.value;
             if (unskbtnName === "") {
                 return;
