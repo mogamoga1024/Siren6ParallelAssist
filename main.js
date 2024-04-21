@@ -56,19 +56,17 @@ const vm = {
             
             const importStrList = importText.split("\n");
             let isFloorData = false;
-            let floorNum = 1;
             let memoList = [];
             
             for (const importStr of importStrList) {
-                if (!isFloorData && importStr === "<[1F]>") {
+                if (!isFloorData && importStr === "<[===]>") {
                     isFloorData = true;
+                    continue;
                 }
                 if (isFloorData) {
-                    if (importStr === `<[${floorNum}F]>` || importStr === "<[END]>") {
-                        if (floorNum > 1) {
-                            localStorage.setItem(`${floorNum - 1}F`, memoList.join("\n"));
-                        }
-                        floorNum++;
+                    if (importStr === "<[===]>") {
+                        const [floorName, ...mainMemoList] = memoList;
+                        localStorage.setItem(floorName, mainMemoList.join("\n"));
                         memoList = [];
                     }
                     else {
@@ -116,10 +114,10 @@ const vm = {
             }
             this.floorMemoList.forEach(floor => {
                 if (floor.memo.trim() !== "") {
-                    this.exportText += `<[${floor.name}]>\n${floor.memo}\n`;
+                    this.exportText += `<[===]>\n${floor.name}\n${floor.memo}\n`;
                 }
             });
-            this.exportText += "<[END]>";
+            this.exportText += "<[===]>";
         },
 
         onClickUnskbtItem(skbtItemName, index) {
