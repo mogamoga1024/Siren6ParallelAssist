@@ -66,27 +66,31 @@
       </div>
     </div>
 
-    <div style="margin-top: 12px;">
+    <div style="margin-top: 12px; padding-bottom: 50px;">
       <table>
         <tr>
           <th>未識別名</th>
           <th>識別名</th>
         </tr>
-        <tr>
+        <tr v-for="skbtName in skbtNameList">
           <td>
             <select>
               <option value="">未選択</option>
-              <option value="">あおい</option>
-              <option value="">あかい</option>
+              <option
+                v-for="unskbtName in unskbtNameList"
+                value="unskbtName">
+                {{unskbtName}}
+              </option>
             </select>
           </td>
-          <td>薬草</td>
+          <td>{{skbtName}}</td>
         </tr>
       </table>
     </div>
     
   </div>
 
+  <script src="kusa.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
