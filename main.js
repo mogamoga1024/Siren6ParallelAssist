@@ -6,6 +6,8 @@ const vm = {
             unskbtNameList: [],
             skbtItemList: [],
             editTargetItemName: "",
+            floorMemoList: floorMemoList,
+            editTargetFloorName: "",
         };
     },
     created() {
@@ -15,6 +17,7 @@ const vm = {
     watch: {
         mode(newVal) {
             this.editTargetItemName = "";
+            this.editTargetFloorName = "";
             let target = null;
             switch (newVal) {
                 case "kusa": target = kusa; break;
@@ -23,7 +26,7 @@ const vm = {
                 case "tubo": target = tubo; break;
                 case "okou": target = okou; break;
                 case "udewa": target = udewa; break;
-                case "floor": return; // todo
+                case "floor": this.initFloor(); return;
             }
             this.unskbtNameList = target.unskbtNameList;
             this.skbtItemList = target.skbtItemList;
@@ -51,6 +54,19 @@ const vm = {
             localStorage.setItem(skbtItem.name, skbtItem.unskbtName);
         },
 
+        onClickFloor(floor) {
+            this.editTargetFloorName = floor.name;
+            setTimeout(() => {
+                this.$refs.floorMemo[floor.index].focus();
+                this.$refs.floorMemo[floor.index].value = floor.memo;
+                this.$refs.floorMemo[floor.index].setSelectionRange(Number.MAX_SAFE_INTEGER, Number.MAX_SAFE_INTEGER);
+            }, 0);
+        },
+        onBlurFloor(e, floor) {
+            this.editTargetFloorName = "";
+            floor.memo = e.target.value;
+        },
+
         isUnskbt(unskbtName) {
             for (const skbtItem of this.skbtItemList) {
                 if (skbtItem.unskbtName === unskbtName) {
@@ -58,6 +74,10 @@ const vm = {
                 }
             }
             return true;
+        },
+
+        initFloor() {
+
         },
     }
 };

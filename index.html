@@ -67,7 +67,7 @@
     </div>
 
     <div style="margin-top: 12px; padding-bottom: 50px;">
-      <table>
+      <table v-if="mode !== 'floor'">
         <tr>
           <th>未識別名</th>
           <th>識別名</th>
@@ -96,6 +96,21 @@
           <td>{{skbtItem.name}}</td>
         </tr>
       </table>
+      <div v-else>
+        <template v-for="floor in floorMemoList">
+          <div class="floor-title">{{floor.name}}</div>
+          <div v-show="editTargetFloorName !== floor.name"
+               class="floor-memo"
+               @click="onClickFloor(floor)">
+            {{floor.memo.trim() === "" ? "特になし" : floor.memo}}
+          </div>
+          <textarea
+            v-show="editTargetFloorName === floor.name"
+            ref="floorMemo"
+            class="floor-memo-textarea"
+            @blur="onBlurFloor($event, floor)"></textarea>
+        </template>
+      </div>
     </div>
     
   </div>
@@ -106,6 +121,7 @@
   <script src="tubo.js"></script>
   <script src="okou.js"></script>
   <script src="udewa.js"></script>
+  <script src="floor.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
