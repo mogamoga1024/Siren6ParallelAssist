@@ -26,7 +26,7 @@ const vm = {
                 case "tubo": target = tubo; break;
                 case "okou": target = okou; break;
                 case "udewa": target = udewa; break;
-                case "floor": this.initFloor(); return;
+                case "floor": return;
             }
             this.unskbtNameList = target.unskbtNameList;
             this.skbtItemList = target.skbtItemList;
@@ -74,10 +74,6 @@ const vm = {
                 }
             }
             return true;
-        },
-
-        initFloor() {
-
         },
     }
 };
