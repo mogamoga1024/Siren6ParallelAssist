@@ -48,6 +48,11 @@ const vm = {
             this.editTargetItemName = "";
             this.editTargetFloorName = "";
             localStorage.clear();
+
+            for (const target of [this, kusa, tue, makimono, tubo, okou, udewa]) {
+                target.skbtItemList.forEach(item => item.unskbtName = "");
+            }
+            this.floorMemoList.forEach(floor => floor.memo = "");
             
             const importStrList = importText.split("\n");
             let isFloorData = false;
@@ -104,11 +109,15 @@ const vm = {
             this.exportText = "";
             for (const target of [kusa, tue, makimono, tubo, okou, udewa]) {
                 target.skbtItemList.forEach(item => {
-                    this.exportText += `${item.name}\t${item.unskbtName}\n`;
+                    if (item.unskbtName !== "") {
+                        this.exportText += `${item.name}\t${item.unskbtName}\n`;
+                    }
                 });
             }
             this.floorMemoList.forEach(floor => {
-                this.exportText += `<[${floor.name}]>\n${floor.memo}\n`;
+                if (floor.memo.trim() !== "") {
+                    this.exportText += `<[${floor.name}]>\n${floor.memo}\n`;
+                }
             });
             this.exportText += "<[END]>";
         },
