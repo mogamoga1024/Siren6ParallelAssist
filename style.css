@@ -23,3 +23,55 @@ h1 {
   margin: 8px 0;
 }
 
+.radio-btn-container {
+  display: flex;
+  align-items: center;
+}
+
+.radio-btn {
+  display: flex;
+  min-width: 30px;
+  height: 32px;
+  line-height: 32px;
+  padding: 2px 8px;
+  border: 1px solid black;
+  border-right-width: 0;
+  justify-content: center;
+  text-align: center;
+  color: #000;
+  background-color: white;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  user-select: none;
+  -webkit-user-select: none;
+
+  &:first-of-type {
+    border-radius: 2px 0 0 2px;
+  }
+
+  &:last-of-type {
+    border-radius: 0 2px 2px 0;
+    border-right-width: 1px;
+  }
+
+  &.selected {
+    background-color: black;
+    color: #fff;
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: black;
+      color: #fff;
+    }
+  }
+  @media (any-hover: none) {
+    &:active {
+      background-color: black;
+      color: #fff;
+    }
+  }
+}
+
+
+
