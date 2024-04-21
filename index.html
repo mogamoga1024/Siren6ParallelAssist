@@ -6,6 +6,11 @@
   <title>シレン6 パラレル補助ツール</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="mobile.css">
+  
+  <!-- レスポンシブ -->
+  <script src="https://cdn.jsdelivr.net/npm/viewport-extra@1.0.3/dist/viewport-extra.min.js"></script>
+  <script>new ViewportExtra(375)</script>
+  
   <script src="https://cdn.jsdelivr.net/npm/vue@3.4.23/dist/vue.global.min.js"></script>
 </head>
 <!--
@@ -13,7 +18,7 @@
   iPhoneのGoogleアプリのブラウザだとinputのフォーカスが背景を押しても外れない仕様のため、それに対応するためのハック
 -->
 <body onclick="">
-  <div id="app">
+  <div id="app" v-cloak>
     <h1>シレン6 パラレル補助ツール</h1>
 
     <div class="btn-container">
@@ -59,6 +64,25 @@
            @click="mode = 'floor'">
         階層
       </div>
+    </div>
+
+    <div style="margin-top: 12px;">
+      <table>
+        <tr>
+          <th>未識別名</th>
+          <th>識別名</th>
+        </tr>
+        <tr>
+          <td>
+            <select>
+              <option value="">未選択</option>
+              <option value="">あおい</option>
+              <option value="">あかい</option>
+            </select>
+          </td>
+          <td>薬草</td>
+        </tr>
+      </table>
     </div>
     
   </div>
