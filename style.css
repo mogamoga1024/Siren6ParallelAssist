@@ -142,10 +142,12 @@ th, td {
 }
 
 .floor-title {
+  width: fit-content;
   font-weight: bold;
 }
 
 .floor-memo {
+  width: fit-content;
   margin-bottom: 8px;
   white-space: pre-wrap;
 }
