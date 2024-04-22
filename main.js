@@ -138,7 +138,11 @@ const vm = {
             const elementTop = element.getBoundingClientRect().top;
             const y = elementTop + scrollY - this.$refs.header.clientHeight;
 
-            scrollTo(0, y);
+            // scrollTo(0, y);
+            scrollTo({
+                top: y,
+                behavior: "smooth",
+            });
         },
 
         onClickUnskbtItem(skbtItemName, index) {
