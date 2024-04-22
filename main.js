@@ -1,5 +1,6 @@
 
 let timer = 0;
+let floorScrollY = 0;
 
 const vm = {
     data() {
@@ -197,12 +198,18 @@ const vm = {
                 case "tubo": target = tubo; break;
                 case "okou": target = okou; break;
                 case "udewa": target = udewa; break;
-                case "floor": return;
+                case "floor": {
+                    setTimeout(() => {
+                        scrollTo(0, floorScrollY);
+                    }, 0);
+                    return;
+                }
             }
             this.unskbtNameList = [...target.unskbtNameList];
             this.skbtItemList = [...target.skbtItemList];
 
-            scrollTo({top: 0});
+            floorScrollY = scrollY;
+            scrollTo(0, 0);
         },
 
         isUnskbt(unskbtName) {
