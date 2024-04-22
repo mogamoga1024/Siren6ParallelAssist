@@ -3,6 +3,7 @@ const tue = {};
 
 tue.unskbtNameList = [
     "イチョウ",
+    "ウィロー",
     "ウメ",
     "エボニー",
     "カエデ",
