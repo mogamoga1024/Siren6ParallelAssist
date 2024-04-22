@@ -115,6 +115,7 @@
             </div>
             <select v-else
                     class="unskbt-name"
+                    @change="onChangeUnskbtItem($event, skbtItem)"
                     @blur="onBlurUnskbtItem($event, skbtItem)">
               <option value="">不明</option>
               <option v-if="editTargetItemName === skbtItem.name"
@@ -127,6 +128,7 @@
                 :value="unskbtName">
                 {{unskbtName}}
               </option>
+              <option value="custom">該当なし</option>
             </select>
           </td>
           <td :class="{'gray': skbtItem.unskbtName === ''}">{{skbtItem.name}}</td>

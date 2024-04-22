@@ -144,7 +144,27 @@ const vm = {
                 }
             }, 0);
         },
+        onChangeUnskbtItem(e, skbtItem) {
+            if (e.target.value !== "custom") {
+                return;
+            }
+
+            this.isImportMode = this.isExportMode = false;
+            this.editTargetItemName = "";
+
+            const customName = prompt("未識別名を入力してください");
+            if (customName === null || customName.trim() === "") {
+                return;
+            }
+            skbtItem.unskbtName = customName;
+
+            localStorage.setItem(skbtItem.name, skbtItem.unskbtName);
+        },
         onBlurUnskbtItem(e, skbtItem) {
+            if (e.target.value === "custom") {
+                return;
+            }
+            
             this.isImportMode = this.isExportMode = false;
             this.editTargetItemName = "";
             skbtItem.unskbtName = e.target.value;
