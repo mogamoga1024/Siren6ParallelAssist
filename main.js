@@ -10,6 +10,8 @@ const vm = {
             editTargetItemName: "",
             floorMemoList: floorMemoList,
             editTargetFloorName: "",
+            startFloorNum: 1,
+            floorNumList: [1, 21, 41, 61, 81],
 
             isImportMode: false,
             isExportMode: false,

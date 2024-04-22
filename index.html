@@ -59,9 +59,9 @@
       <textarea @click="$event.target.select()">{{exportText}}</textarea>
     </div>
 
-    <div class="btn-container-wrapper">
-      <div class="radio-btn-container"
-           style="margin-top: 8px;">
+    <div class="btn-container-wrapper"
+         style="margin-top: 8px;">
+      <div class="radio-btn-container">
         <div class="radio-btn"
              :class="{selected: mode === 'kusa'}"
              @click="mode = 'kusa'">
@@ -134,7 +134,18 @@
       </table>
       <div v-else
            class="edit-container">
-        <template v-for="floor in floorMemoList">
+        <div class="btn-container-wrapper"
+             style="margin-bottom: 8px;">
+          <div class="radio-btn-container">
+            <div v-for="floorNum in floorNumList"
+                 class="radio-btn"
+                 :class="{selected: startFloorNum === floorNum}"
+                 @click="startFloorNum = floorNum">
+              {{floorNum}}
+            </div>
+          </div>
+        </div>
+        <template v-for="floor in floorMemoList.slice(startFloorNum - 1)">
           <div class="floor-title"
                @click="onClickFloor(floor)">
             {{floor.name}}
