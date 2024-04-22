@@ -121,6 +121,27 @@ h1 {
   }
 }
 
+.radio-btn.small {
+  min-width: 24px;
+  height: 24px;
+  line-height: 24px;
+  padding: 2px 3px;
+  border: 1px solid black;
+  border-right-width: 0;
+  justify-content: center;
+  text-align: center;
+  font-size: 18px;
+
+  &:first-of-type {
+    border-radius: 2px 0 0 2px;
+  }
+
+  &:last-of-type {
+    border-radius: 0 2px 2px 0;
+    border-right-width: 1px;
+  }
+}
+
 select {
   font-size: var(--font-size);
 }
