@@ -201,6 +201,8 @@ const vm = {
             }
             this.unskbtNameList = [...target.unskbtNameList];
             this.skbtItemList = [...target.skbtItemList];
+
+            scrollTo({top: 0});
         },
 
         isUnskbt(unskbtName) {
