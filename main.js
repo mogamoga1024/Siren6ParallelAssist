@@ -131,6 +131,16 @@ const vm = {
             });
         },
 
+        onClickFloorNum(floorNum) {
+            this.startFloorNum = floorNum
+
+            const element = this.$refs.floorTitle[floorNum - 1];
+            const elementTop = element.getBoundingClientRect().top;
+            const y = elementTop + scrollY - this.$refs.header.clientHeight;
+
+            scrollTo(0, y);
+        },
+
         onClickUnskbtItem(skbtItemName, index) {
             clearInterval(timer);
 

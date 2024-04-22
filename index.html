@@ -20,7 +20,7 @@
 -->
 <body onclick="">
   <div id="app" v-cloak>
-    <div :class="{'sticky': mode === 'floor'}">
+    <div ref="header" :class="{'sticky': mode === 'floor'}">
       <h1>シレン6 パラレル補助ツール</h1>
   
       <div class="btn-container-wrapper">
@@ -108,7 +108,7 @@
           <div v-for="floorNum in floorNumList"
                class="radio-btn small"
                :class="{selected: startFloorNum === floorNum}"
-               @click="startFloorNum = floorNum">
+               @click="onClickFloorNum(floorNum)">
             {{floorNum}}
           </div>
         </div>
@@ -153,8 +153,9 @@
       </table>
       <div v-else
            class="edit-container">
-        <template v-for="floor in floorMemoList.slice(startFloorNum - 1)">
-          <div class="floor-title"
+        <template v-for="floor in floorMemoList">
+          <div ref="floorTitle"
+               class="floor-title"
                @click="onClickFloor(floor)">
             {{floor.name}}
           </div>
