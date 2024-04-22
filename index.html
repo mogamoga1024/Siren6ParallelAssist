@@ -99,8 +99,23 @@
         </div>
       </div>
     </div>
+
+    <div v-show="mode === 'floor'"
+         class="btn-container-wrapper"
+         style="margin-top: 8px;">
+      <div class="radio-btn-container">
+        <div v-for="floorNum in floorNumList"
+             class="radio-btn small"
+             :class="{selected: startFloorNum === floorNum}"
+             @click="startFloorNum = floorNum">
+          {{floorNum}}
+        </div>
+      </div>
+    </div>
+
+    <hr>
     
-    <div style="margin-top: 12px; padding-bottom: 50px;">
+    <div style="padding-bottom: 50px;">
       <table v-if="mode !== 'floor'">
         <tr>
           <th>未識別名</th>
@@ -136,17 +151,6 @@
       </table>
       <div v-else
            class="edit-container">
-        <div class="btn-container-wrapper"
-             style="margin-bottom: 8px;">
-          <div class="radio-btn-container">
-            <div v-for="floorNum in floorNumList"
-                 class="radio-btn small"
-                 :class="{selected: startFloorNum === floorNum}"
-                 @click="startFloorNum = floorNum">
-              {{floorNum}}
-            </div>
-          </div>
-        </div>
         <template v-for="floor in floorMemoList.slice(startFloorNum - 1)">
           <div class="floor-title"
                @click="onClickFloor(floor)">
