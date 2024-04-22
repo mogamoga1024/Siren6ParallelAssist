@@ -37,7 +37,7 @@ tubo.unskbtNameList = [
     "よじれた",
 ];
 
-// ビックリは除外
+// ビックリ、倉庫は除外
 tubo.skbtItemList = [
     {name: "保存の壺", unskbtName: ""},
     {name: "識別の壺", unskbtName: ""},
@@ -46,7 +46,6 @@ tubo.skbtItemList = [
     {name: "やりすごしの壺", unskbtName: ""},
     {name: "換金の壺", unskbtName: ""},
     {name: "底抜けの壺", unskbtName: ""},
-    {name: "倉庫の壺", unskbtName: ""},
     {name: "手封じの壺", unskbtName: ""},
     {name: "割れない壺", unskbtName: ""},
     {name: "おはらいの壺", unskbtName: ""},
