@@ -39,8 +39,8 @@ kusa.unskbtNameList = [
     "レモン色",
 ];
 
+// 雑草は除外
 kusa.skbtItemList = [
-    {name: "雑草", unskbtName: ""},
     {name: "薬草", unskbtName: ""},
     {name: "毒草", unskbtName: ""},
     {name: "暴走の種", unskbtName: ""},
