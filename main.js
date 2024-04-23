@@ -169,6 +169,7 @@ const vm = {
 
             const customName = prompt("未識別名を入力してください");
             if (customName === null || customName.trim() === "") {
+                e.target.value = "";
                 return;
             }
             skbtItem.unskbtName = customName;
