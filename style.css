@@ -17,7 +17,7 @@ body {
 
 #app {
   margin-left: 120px;
-  max-width: 420px;
+  max-width: 700px;
 }
 
 .sticky {
@@ -184,7 +184,6 @@ th, td {
 .floor-memo-textarea, textarea {
   display: block;
   width: 100%;
-  max-width: 400px;
   height: 120px;
   border: solid 1px black;
   font-size: var(--font-size);
