@@ -70,13 +70,13 @@ const vm = {
                 if (isFloorData) {
                     if (importStr === "<[===]>") {
                         const [floorName, ...mainMemoList] = memoList;
-                        localStorage.setItem(floorName, mainMemoList.join("\n"));
+                        localStorage.setItem(floorName, mainMemoList.join("\n").trimEnd());
                         memoList = [];
                     }
                     else if (i === importStrList.length - 1) {
                         memoList.push(importStr);
                         const [floorName, ...mainMemoList] = memoList;
-                        localStorage.setItem(floorName, mainMemoList.join("\n"));
+                        localStorage.setItem(floorName, mainMemoList.join("\n").trimEnd());
                         memoList = [];
                     }
                     else {
